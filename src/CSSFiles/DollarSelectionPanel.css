@@ -1,13 +1,21 @@
-.dollar-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    background: #e0e0e0;
+.dollar-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
     margin: 20px;
 
     border: 4px solid #cfcfcf;
     border-radius: 10px;
+    background: #e0e0e0;
 
-    max-width: 200px;
+    padding: 20px;
+}
+
+.dollar-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 .dollar-section button {

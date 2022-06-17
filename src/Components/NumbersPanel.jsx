@@ -23,6 +23,10 @@ const NumbersPanel = () => {
 
     return (
         <div className="numbers-panel">
+            <div className="title">
+                <p>🔢 Select numbers 🔢</p>
+            </div>
+
             <div className="numbers">
                 {buttons.map((button, i) => {
                     return (
