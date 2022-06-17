@@ -1,0 +1,33 @@
+.numbers-panel {
+    background: #ffe96a;
+    margin: 20px;
+
+    border: 4px solid #ffd000;
+    border-radius: 10px;
+}
+
+.numbers {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.highlight {
+    background: red;
+    border: 2px solid red;
+}
+
+.numbers-panel button {
+    background: linear-gradient(45deg, #cacaca, #fff6ee);
+    margin: 10px;
+    border-radius: 9999px;
+    cursor: pointer;
+
+    font-size: large;
+    font-weight: 600;
+}
+
+.numbers-panel button:hover {
+    background: linear-gradient(45deg, #fffd7f, #ffa0a0);
+    /* border: #ffa0a0; */
+    transform: scale(1.2);
+}
