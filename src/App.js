@@ -9,10 +9,18 @@ import "./CSSFiles/App.css"
 
 function App() {
     const [selectedNumbers, setSelectedNumbers] = useState([])
+    const [moneyValue, setMoneyValue] = useState(0)
+    const [showResult, setShowResult] = useState({
+        selectedNumbers,
+        moneyValue,
+    })
 
-    useEffect(() => {
-        console.log(selectedNumbers)
-    }, [selectedNumbers])
+    const showSelectedNumbers = () => {
+        setShowResult({
+            selectedNumbers,
+            moneyValue,
+        })
+    }
 
     return (
         <div className="App">
@@ -20,12 +28,19 @@ function App() {
             <Message />
 
             <div className="panels">
-                <DollarSelectionPanel />
+                <DollarSelectionPanel
+                    selectedNumbers={selectedNumbers}
+                    setMoneyValue={setMoneyValue}
+                />
                 <NumbersPanel
                     selectedNumbers={selectedNumbers}
                     setSelectedNumbers={setSelectedNumbers}
+                    showSelectedNumbers={showSelectedNumbers}
                 />
-                <ResultPanel />
+                <ResultPanel
+                    selectedNumbers={selectedNumbers}
+                    moneyValue={moneyValue}
+                />
             </div>
         </div>
     )

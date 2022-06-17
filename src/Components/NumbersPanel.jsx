@@ -3,7 +3,7 @@ import "../CSSFiles/NumbersPanel.css"
 import { useState, useEffect } from "react"
 
 const NumbersPanel = props => {
-    const { selectedNumbers, setSelectedNumbers } = props
+    const { selectedNumbers, setSelectedNumbers, showSelectedNumbers } = props
 
     const [buttons, setButtons] = useState([])
 
@@ -19,12 +19,16 @@ const NumbersPanel = props => {
         setButtons(tempButtons)
     }
 
-    const changeButtonColors = num => {
+    useEffect(() => {
+        initializeButtons()
+    }, [])
+
+    const changeButtonColors = (num, isSelectedAlready) => {
         const tempButtons = buttons.map(button => {
             if (button.number === num) {
                 return {
                     ...button,
-                    className: "selected",
+                    className: isSelectedAlready ? "" : "selected",
                 }
             } else return button
         })
@@ -33,15 +37,19 @@ const NumbersPanel = props => {
     }
 
     const selectNumbers = button => {
-        if (selectedNumbers.length < 5) {
-            changeButtonColors(button.number)
-            setSelectedNumbers([...selectedNumbers, button.number])
+        if (selectedNumbers.includes(button.number)) {
+            // in case the number is already selected
+            changeButtonColors(button.number, true)
+            setSelectedNumbers([
+                ...selectedNumbers.filter(num => button.number !== num),
+            ])
+        } else {
+            if (selectedNumbers.length < 5) {
+                changeButtonColors(button.number)
+                setSelectedNumbers([...selectedNumbers, button.number])
+            } else alert("Sorry, you can select 5 numbers at most.")
         }
     }
-
-    useEffect(() => {
-        initializeButtons()
-    }, [])
 
     return (
         <div className="numbers-panel">
@@ -65,7 +73,7 @@ const NumbersPanel = props => {
                 })}
             </div>
 
-            <button>Cash</button>
+            <button onClick={showSelectedNumbers}>Cash</button>
             <button>Clear</button>
             <button>Select Random</button>
         </div>
