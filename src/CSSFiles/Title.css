@@ -1,0 +1,16 @@
+.header-title {
+    background: #ffaa65;
+    height: fit-content;
+
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+
+    border-radius: 10px;
+    border: 5px solid #ff1d1d;
+}
+
+.header-title h1 {
+    color: white;
+    filter: drop-shadow(4px 4px 10px #ff1d1d);
+}
