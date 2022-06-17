@@ -6,11 +6,6 @@
     border-radius: 10px;
 }
 
-.result-panel p {
-    font-weight: 600;
-    font-size: large;
-}
-
 .selected-numbers {
     margin: 10px;
     border-bottom: 2px solid black;

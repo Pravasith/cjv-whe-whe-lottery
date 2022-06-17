@@ -11,11 +11,6 @@
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
 
-.highlight {
-    background: red;
-    border: 2px solid red;
-}
-
 .numbers-panel button {
     background: linear-gradient(45deg, #cacaca, #fff6ee);
     margin: 10px;
@@ -30,4 +25,9 @@
     background: linear-gradient(45deg, #fffd7f, #ffa0a0);
     /* border: #ffa0a0; */
     transform: scale(1.2);
+}
+
+.numbers-panel .selected {
+    background: rgb(255, 120, 120);
+    border: 2px solid red;
 }
