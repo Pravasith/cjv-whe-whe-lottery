@@ -17,19 +17,3 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
-
-.dollar-section button {
-    background: linear-gradient(45deg, #cfcfcf, #f3f3f3);
-    margin: 10px;
-    border-radius: 9999px;
-    cursor: pointer;
-
-    font-size: large;
-    font-weight: 600;
-}
-
-.dollar-section button:hover {
-    background: linear-gradient(45deg, #fffd7f, #ffa0a0);
-    /* border: #ffa0a0; */
-    transform: scale(1.2);
-}

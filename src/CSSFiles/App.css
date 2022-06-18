@@ -28,6 +28,26 @@ p {
 }
 
 .blue {
-    color: #004aaa;
+    color: red;
+
+    font-size: x-large;
+}
+
+button {
+    background: linear-gradient(45deg, #cacaca, #fff6ee);
+    border: 4px solid #cacaca;
+    margin: 10px;
+    border-radius: 9999px;
+    cursor: pointer;
+
     font-size: large;
+    font-weight: 600;
+    transition-duration: 0.2s;
+}
+
+button:hover {
+    background: linear-gradient(45deg, #ffe96a, #ffd000);
+    border: 4px solid gold;
+
+    transform: scale(1.2);
 }
