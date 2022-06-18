@@ -15,6 +15,24 @@ function App() {
         setMoneyValue(0)
     }
 
+    const showResult = () => {
+        if (!selectedNumbers.length || selectedNumbers.length < 5) {
+            alert("Please choose 5 numbers and a money value first!")
+            return
+        }
+
+        if (!moneyValue) {
+            alert("Please choose the Money value!")
+            return
+        }
+
+        alert(
+            `Numbers selected are: ${selectedNumbers.join(
+                ", "
+            )}, and the money value selected is $${moneyValue}`
+        )
+    }
+
     return (
         <div className="App">
             <Title />
@@ -29,6 +47,7 @@ function App() {
                     selectedNumbers={selectedNumbers}
                     setSelectedNumbers={setSelectedNumbers}
                     clearMoneyValue={clearMoneyValue}
+                    showResult={showResult}
                 />
                 <ResultPanel
                     selectedNumbers={selectedNumbers}

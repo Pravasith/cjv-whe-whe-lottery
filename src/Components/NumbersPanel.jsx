@@ -3,7 +3,8 @@ import "../CSSFiles/NumbersPanel.css"
 import { useState, useEffect } from "react"
 
 const NumbersPanel = props => {
-    const { selectedNumbers, setSelectedNumbers, clearMoneyValue } = props
+    const { selectedNumbers, setSelectedNumbers, clearMoneyValue, showResult } =
+        props
 
     const numbers1To20 = new Array(20).fill(0).map((_, i) => i + 1)
 
@@ -85,6 +86,10 @@ const NumbersPanel = props => {
         setSelectedNumbers(randomNumbers)
     }
 
+    const handleCash = () => {
+        showResult()
+    }
+
     return (
         <div className="numbers-panel">
             <div className="title">
@@ -107,7 +112,7 @@ const NumbersPanel = props => {
                 })}
             </div>
 
-            <button onClick={() => {}}>Cash</button>
+            <button onClick={handleCash}>Cash</button>
             <button onClick={handleClear}>Clear</button>
             <button onClick={selectRandom}>Select Random</button>
         </div>
