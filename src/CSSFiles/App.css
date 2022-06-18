@@ -23,6 +23,11 @@
 
 p {
     font-weight: 600;
-    font-size: large;
+    font-size: larger;
     text-align: center;
+}
+
+.blue {
+    color: #004aaa;
+    font-size: large;
 }

@@ -3,20 +3,21 @@ import "../CSSFiles/NumbersPanel.css"
 import { useState, useEffect } from "react"
 
 const NumbersPanel = props => {
-    const { selectedNumbers, setSelectedNumbers, showSelectedNumbers } = props
+    const { selectedNumbers, setSelectedNumbers, clearMoneyValue } = props
+
+    const numbers1To20 = new Array(20).fill(0).map((_, i) => i + 1)
 
     const [buttons, setButtons] = useState([])
 
     const initializeButtons = () => {
         // This function initializes the buttons array and sets it to state
-        const tempButtons = new Array(20).fill(0).map((_, i) => {
-            return {
-                className: "",
-                number: i + 1,
-            }
-        })
+        const tempButtons = numbers1To20.map(number => ({
+            className: "",
+            number,
+        }))
 
         setButtons(tempButtons)
+        setSelectedNumbers([])
     }
 
     useEffect(() => {
@@ -36,19 +37,52 @@ const NumbersPanel = props => {
         setButtons(tempButtons)
     }
 
-    const selectNumbers = button => {
-        if (selectedNumbers.includes(button.number)) {
+    const selectTheNumber = buttonNumber => {
+        if (selectedNumbers.includes(buttonNumber)) {
             // in case the number is already selected
-            changeButtonColors(button.number, true)
+            changeButtonColors(buttonNumber, true)
             setSelectedNumbers([
-                ...selectedNumbers.filter(num => button.number !== num),
+                ...selectedNumbers.filter(num => buttonNumber !== num),
             ])
         } else {
             if (selectedNumbers.length < 5) {
-                changeButtonColors(button.number)
-                setSelectedNumbers([...selectedNumbers, button.number])
+                changeButtonColors(buttonNumber)
+                setSelectedNumbers([...selectedNumbers, buttonNumber])
             } else alert("Sorry, you can select 5 numbers at most.")
         }
+    }
+
+    const handleClear = () => {
+        clearMoneyValue()
+        initializeButtons()
+    }
+
+    const selectRandom = () => {
+        const getRandomInt = (min, max) => {
+            min = Math.ceil(min)
+            max = Math.floor(max)
+            return Math.floor(Math.random() * (max - min + 1)) + min
+        }
+
+        const randomNumbers = []
+        let c = 0
+
+        while (c < 5) {
+            const randomNumber = getRandomInt(1, 20)
+
+            if (randomNumbers.includes(randomNumber)) continue
+            else randomNumbers.push(randomNumber)
+
+            c++
+        }
+
+        const newButtons = buttons.map(button => ({
+            number: button.number,
+            className: randomNumbers.includes(button.number) ? "selected" : "",
+        }))
+
+        setButtons(newButtons)
+        setSelectedNumbers(randomNumbers)
     }
 
     return (
@@ -64,7 +98,7 @@ const NumbersPanel = props => {
                             key={"numbers-" + i}
                             className={button.className}
                             onClick={() => {
-                                selectNumbers(button)
+                                selectTheNumber(button.number)
                             }}
                         >
                             {button.number}
@@ -73,9 +107,9 @@ const NumbersPanel = props => {
                 })}
             </div>
 
-            <button onClick={showSelectedNumbers}>Cash</button>
-            <button>Clear</button>
-            <button>Select Random</button>
+            <button onClick={() => {}}>Cash</button>
+            <button onClick={handleClear}>Clear</button>
+            <button onClick={selectRandom}>Select Random</button>
         </div>
     )
 }

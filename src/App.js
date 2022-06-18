@@ -10,16 +10,9 @@ import "./CSSFiles/App.css"
 function App() {
     const [selectedNumbers, setSelectedNumbers] = useState([])
     const [moneyValue, setMoneyValue] = useState(0)
-    const [showResult, setShowResult] = useState({
-        selectedNumbers,
-        moneyValue,
-    })
 
-    const showSelectedNumbers = () => {
-        setShowResult({
-            selectedNumbers,
-            moneyValue,
-        })
+    const clearMoneyValue = () => {
+        setMoneyValue(0)
     }
 
     return (
@@ -35,7 +28,7 @@ function App() {
                 <NumbersPanel
                     selectedNumbers={selectedNumbers}
                     setSelectedNumbers={setSelectedNumbers}
-                    showSelectedNumbers={showSelectedNumbers}
+                    clearMoneyValue={clearMoneyValue}
                 />
                 <ResultPanel
                     selectedNumbers={selectedNumbers}

@@ -7,12 +7,16 @@ const ResultPanel = props => {
         <div className="result-panel">
             <div className="selected-numbers">
                 <p>Selected Numbers</p>
-                <p>{selectedNumbers.join(", ")}</p>
+                <p className="blue">
+                    {!!selectedNumbers.length
+                        ? selectedNumbers.join(", ")
+                        : "Selection empty"}
+                </p>
             </div>
 
             <div className="selected-dollars">
                 <p>Dollar amount selected</p>
-                <p>${moneyValue}</p>
+                <p className="blue">${moneyValue}</p>
             </div>
         </div>
     )
