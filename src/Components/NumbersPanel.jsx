@@ -112,9 +112,15 @@ const NumbersPanel = props => {
                 })}
             </div>
 
-            <button onClick={handleCash}>Cash</button>
-            <button onClick={handleClear}>Clear</button>
-            <button onClick={selectRandom}>Select Random</button>
+            <button className="primary-btn" onClick={handleCash}>
+                Cash
+            </button>
+            <button className="primary-btn" onClick={handleClear}>
+                Clear
+            </button>
+            <button className="primary-btn" onClick={selectRandom}>
+                Select Random
+            </button>
         </div>
     )
 }

@@ -15,7 +15,7 @@ const ResultPanel = props => {
             </div>
 
             <div className="selected-dollars">
-                <p>Dollar amount selected</p>
+                <p>Total</p>
                 <p className="blue">${moneyValue}</p>
             </div>
         </div>
